@@ -1,0 +1,14 @@
+[package]
+version = "0.1.0"
+name = "fibonacci-program"
+edition = "2021"
+
+
+[dependencies]
+alloy-sol-types = { workspace = true }
+sp1-zkvm = "5.0.8"
+
+[build-dependencies]
+cc = "1.0"         # optional (only if you want Cargo to build C++ for you)
+
+

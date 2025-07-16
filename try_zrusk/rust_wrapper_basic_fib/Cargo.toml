@@ -1,0 +1,9 @@
+[package]
+name = "fib_ffi_demo"
+version = "0.1.0"
+edition = "2021"
+
+# no runtime deps needed
+
+[build-dependencies]
+cc = "1.0"         # optional (only if you want Cargo to build C++ for you)
