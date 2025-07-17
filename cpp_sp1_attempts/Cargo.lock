@@ -1499,6 +1499,7 @@ dependencies = [
  "cc",
  "cxx",
  "cxx-build",
+ "libm",
  "sp1-zkvm",
 ]
 
@@ -1512,6 +1513,7 @@ dependencies = [
  "cxx-build",
  "dotenv",
  "hex",
+ "libm",
  "serde",
  "serde_json",
  "sp1-build",

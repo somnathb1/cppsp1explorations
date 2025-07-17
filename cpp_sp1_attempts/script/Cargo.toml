@@ -25,8 +25,15 @@ tracing = "0.1.40"
 hex = "0.4.3"
 alloy-sol-types = { workspace = true }
 dotenv = "0.15.0"
-sp1-zkvm = "5.0.8"
 cxx = "1.0.160"                 # runtime bridge
+
+[dependencies.libm]
+version = "0.2.15"
+default-features = false
+
+[dependencies.sp1-zkvm]
+version = "5.0.8"
+default-features = false
 
 
 [build-dependencies]
