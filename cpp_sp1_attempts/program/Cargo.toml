@@ -1,0 +1,16 @@
+[package]
+version = "0.1.0"
+name = "fibonacci-program"
+edition = "2021"
+
+
+[dependencies]
+alloy-sol-types = { workspace = true }
+cxx = "1.0.160"                 # runtime bridge
+sp1-zkvm = "5.0.8"
+
+
+
+[build-dependencies]
+cxx-build = "1.0.160"           # build-time codegen & C++ compilation
+cc = "1.2.29"
