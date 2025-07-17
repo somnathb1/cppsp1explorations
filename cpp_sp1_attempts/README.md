@@ -1,25 +1,30 @@
-# SP1 Project Template
 
-This is a template for creating an end-to-end [SP1](https://github.com/succinctlabs/sp1) project
-that can generate a proof of any RISC-V program.
+Install sp1 and its c-toolchain
+see https://docs.succinct.xyz/docs/sp1/getting-started/install
+```
+curl -L https://sp1up.succinct.xyz | bash
+sp1up --c-toolchain
+```
 
-## Requirements
+Verify installation
+```
+cargo prove --version
+```
 
-- [Rust](https://rustup.rs/)
-- [SP1](https://docs.succinct.xyz/docs/sp1/getting-started/install)
+You should point the g++ to the one provided by the installation of sp1up, for the rv32im-ilp32 arch/platform
+```sh
+export RUSTC_LINKER=/home/som/.sp1/riscv/riscv32im-linux-x86_64/bin/riscv32-unknown-elf-ld 
+export CXX_riscv32im_succinct_zkvm_elf=/home/som/.sp1/riscv/riscv32im-linux-x86_64/bin/riscv32-unknown-elf-g++ 
+```
 
-## Running the Project
-
-There are 3 main ways to run this project: execute a program, generate a core proof, and
-generate an EVM-compatible proof.
-
-### Build the Program
+To build the source in `program` folder
+```
+cd program
+cargo prove build
+```
+This build should succeed
 
 The program is automatically built through `script/build.rs` when the script is built.
-
-### Execute the Program
-
-To run the program without generating a proof:
 
 ```sh
 cd script

@@ -56,20 +56,15 @@ fn main() {
 
     if args.execute {
         // Execute the program
-        let (output, report) = client.execute(FIBONACCI_ELF, &stdin).run().unwrap();
+        let (mut output, report) = client.execute(FIBONACCI_ELF, &stdin).run().unwrap();
         println!("Program executed successfully.");
 
         // Read the output.
-        // let decoded = PublicValuesStruct::abi_decode(output.as_slice()).unwrap();
-        // let PublicValuesStruct { n, a, b } = decoded;
+        let a: u64 = output.read::<u64>();
         // println!("n: {}", n);
-        // println!("a: {}", a);
-        // println!("b: {}", b);
-
-        // let (expected_a, expected_b) = fibonacci(n);
-        // assert_eq!(a, expected_a);
-        // assert_eq!(b, expected_b);
-        // println!("Values are correct!");
+        println!("Program output a: {a}");
+        assert_eq!(a, 6765); // fib(20)
+        println!("Values are correct!");
 
         // Record the number of cycles executed.
         println!("Number of cycles: {}", report.total_instruction_count());
