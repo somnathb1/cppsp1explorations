@@ -1,0 +1,3 @@
+[submodule "silk_st_sp1/silkworm"]
+	path = silk_st_sp1/silkworm
+	url = https://github.com/somnathb1/silkworm.git

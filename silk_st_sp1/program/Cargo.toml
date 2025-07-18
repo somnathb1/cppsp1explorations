@@ -18,6 +18,5 @@ version = "5.0.8"
 
 
 [build-dependencies]
-cmake = "0.1.54"
 cxx-build = "1.0.160"           # build-time codegen & C++ compilation
 cc = "1.2.29"
