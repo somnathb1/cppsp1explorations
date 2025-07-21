@@ -1501,19 +1501,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "fibonacci-program"
-version = "0.1.0"
-dependencies = [
- "alloy-sol-types",
- "cc",
- "cmake",
- "cxx",
- "cxx-build",
- "libm",
- "sp1-zkvm",
-]
-
-[[package]]
 name = "fibonacci-script"
 version = "0.1.0"
 dependencies = [
@@ -4104,6 +4091,19 @@ checksum = "77549399552de45a898a580c1b41d445bf730df867cc44e6c0233bbc4b8329de"
 dependencies = [
  "digest 0.10.7",
  "rand_core 0.6.4",
+]
+
+[[package]]
+name = "silkworm-rust"
+version = "0.1.0"
+dependencies = [
+ "alloy-sol-types",
+ "cc",
+ "cmake",
+ "cxx",
+ "cxx-build",
+ "libm",
+ "sp1-zkvm",
 ]
 
 [[package]]

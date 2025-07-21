@@ -30,4 +30,5 @@
         "abi-ptrmem1.C": "cpp",
         "conj1.C": "cpp"
     },
+    "cmake.sourceDirectory": "/home/som/Documents/code/cppsp1explorations/silk_st_sp1/silkworm/silkworm/dev",
 }
