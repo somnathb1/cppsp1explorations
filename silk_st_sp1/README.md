@@ -92,3 +92,7 @@ command:
 ```sh
 SP1_PROVER=network NETWORK_PRIVATE_KEY=... cargo run --release --bin evm
 ```
+
+
+Look for build path at 
+/home/som/Documents/code/cppsp1explorations/silk_st_sp1/target/elf-compilation/riscv32im-succinct-zkvm-elf/release/build/silk-rust-state_transition-5a8ac9689182d625/out

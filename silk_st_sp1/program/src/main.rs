@@ -7,7 +7,7 @@
 // inside the zkVM.
 #![no_main]
 
-use crate::ffi::sample_run;
+// use crate::ffi::sample_run_wrapped;
 sp1_zkvm::entrypoint!(main);
 
 // src/main.rs
@@ -15,8 +15,8 @@ sp1_zkvm::entrypoint!(main);
 mod ffi {
     // Tell cxx what C++ header to include
     unsafe extern "C++" {
-        include!("state_transition.hpp");          // relative to the BUILD script's include path
-        fn sample_run() ;  // signature must match fib.h / fib.cpp
+        include!("wrapper.hpp");          // relative to the BUILD script's include path
+        fn sample_run_wrapped() ;  // signature must match fib.h / fib.cpp
     }
 }
 
@@ -29,9 +29,9 @@ pub fn main() {
     // let n = sp1_zkvm::io::read::<u32>();
 
     // Compute the n'th fibonacci number using a function from the workspace lib crate.
-    let a = ffi::fib_cxx(n);
+    // let a = ffi::fib_cxx(n);
 
-    sample_run();
+    ffi::sample_run_wrapped();
 
     // Commit to the public values of the program. The final proof will have a commitment to all the
     // bytes that were committed to.

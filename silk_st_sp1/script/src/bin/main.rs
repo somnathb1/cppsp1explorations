@@ -16,7 +16,7 @@ use clap::Parser;
 use sp1_sdk::{include_elf, ProverClient, SP1Stdin};
 
 /// The ELF (executable and linkable format) file for the Succinct RISC-V zkVM.
-pub const FIBONACCI_ELF: &[u8] = include_elf!("fibonacci-program");
+pub const FIBONACCI_ELF: &[u8] = include_elf!("silk-rust-state_transition");
 
 /// The arguments for the command.
 #[derive(Parser, Debug)]
