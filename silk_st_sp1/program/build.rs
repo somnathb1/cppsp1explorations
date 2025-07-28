@@ -2,6 +2,47 @@ use pkg_config;
 use std::{env, path::Path};
 
 fn main() {
+
+        //------------------------------------------------------------------
+    // 0.  Compile crt0.S + syscalls.c into a static lib
+    //------------------------------------------------------------------
+    // let out_dir = Path::new(&env::var("OUT_DIR").unwrap());
+
+    // println!("cargo:rustc-link-search=native=/home/som/Documents/code/cppsp1explorations/templibs");
+    // println!("cargo:rustc-link-search=native=/home/som/Documents/code/cppsp1explorations/templibs/gmp");
+
+
+    // println!("cargo:rustc-link-lib=static=c");
+    // println!("cargo:rustc-link-lib=static=gcc");
+    // // println!("cargo:rustc-link-lib=static=sp1_zkvm");
+    // // println!("cargo:rustc-link-lib=static=nosys");
+    // // println!("cargo:rustc-link-lib=static=stdc++");
+
+
+    // cc::Build::new()
+    //     // .file("src/guest/crt0.S")            // sets SP, jumps to silkworm_guest_main
+    //     // .file("src/guest/syscalls.c")        // _write, _sbrk, ...
+    //     .flag("-march=rv32im")
+    //     .flag("-mabi=ilp32")
+    //     .include("/home/som/.sp1/riscv/riscv32im-linux-x86_64/riscv32-unknown-elf/include/c++/13.2.0",)
+    //     .flag("-Os")
+    //     .compile("guestcrt");            // produces libguestcrt.a in OUT_DIR
+
+    // // println!("cargo:rustc-link-search=native={}", out_dir.display());
+    // println!("cargo:rustc-link-lib=static=guestcrt");
+
+    // Tell rustc to use our custom linker script.
+    let templib_dir = "/home/som/Documents/code/cppsp1explorations/templibs";
+
+    // 1. Use prebuilt crt0.o and linker script
+    println!("cargo:rustc-link-search=native={templib_dir}");
+    // println!("cargo:rustc-link-arg={templib_dir}/crt0.o");
+    println!("cargo:rustc-link-arg=-z");
+    println!("cargo:rustc-link-arg=norelro");
+    println!("cargo:rustc-link-arg=-T{templib_dir}/ldscripts/elf32lriscv.x");
+    // println!("cargo:rustc-link-arg=-Tsrc/guest/linker.ld");
+
+
     println!(
         "cargo:rustc-link-search=native={}",
         std::env::var("CARGO_MANIFEST_DIR").unwrap()
@@ -10,15 +51,14 @@ fn main() {
     // println!("cargo:rustc-link-search=native=/home/som/.sp1/riscv/riscv32im-linux-x86_64/riscv32-unknown-elf/lib");
     // println!("cargo:rustc-link-lib=static=supc++");
 
-    // println!("cargo:rustc-link-lib=static=fibcpp");
-    // println!("cargo:rustc-link-search=native=/home/som/Documents/code/cppsp1explorations/templibs");
-    let conan_dir = Path::new("build/conan");
+    println!("cargo:rustc-link-search=native=/home/som/Documents/code/cppsp1explorations/templibs");
+    let conan_dir = Path::new("build/conan2");
     let dst = cmake::Config::new("../silkworm")
         .build_arg("-j16") // Use 4 parallel jobs, adjust as needed
         .define("BUILD_SHARED_LIBS", "OFF")
         .define("CMAKE_SYSTEM_NAME", "Generic")
         .define("CMAKE_SYSTEM_PROCESSOR", "riscv32")
-        .define("CMAKE_CXX_STANDARD", "17")
+        .define("CMAKE_CXX_STANDARD", "20")
         .define("CMAKE_CXX_STANDARD_REQUIRED", "ON")
         .define(
             "GMP_LIBRARY",
@@ -61,6 +101,7 @@ fn main() {
 
     println!("cargo:rustc-link-lib=static=c");
     println!("cargo:rustc-link-lib=static=gcc");
+    // println!("cargo:rustc-link-lib=static=guestcrt");
     println!("cargo:rustc-link-lib=static=nosys");
     println!("cargo:rustc-link-lib=static=stdc++");
     // println!("cargo:rustc-link-lib=static=cstd");
@@ -95,10 +136,9 @@ fn main() {
         .file("src/wrapper.cpp")
         .include("src/include")
         // .include("../external/json/include")
+        .flag("-Os")
         .flag_if_supported("-nostdlib++") // g++: don’t pull libstdc++ while linking the static lib
-        .include(
-            "/home/som/.sp1/riscv/riscv32im-linux-x86_64/riscv32-unknown-elf/include/c++/13.2.0",
-        );
+        .include("/home/som/.sp1/riscv/riscv32im-linux-x86_64/riscv32-unknown-elf/include/c++/13.2.0",);
 
     for (key, val) in env::vars() {
         if key.starts_with("CONAN_INCLUDE_DIRS_") {
