@@ -15,7 +15,8 @@ default-features = false
 
 [dependencies.sp1-zkvm]
 version = "5.1.0"
-
+default-features = false
+features = ["embedded"]
 
 [build-dependencies]
 cmake = "0.1.54"
