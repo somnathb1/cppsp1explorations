@@ -15,6 +15,8 @@ You should point the g++ to the one provided by the installation of sp1up, for t
 ```sh
 export RUSTC_LINKER=/home/som/.sp1/riscv/riscv32im-linux-x86_64/bin/riscv32-unknown-elf-ld 
 export CXX_riscv32im_succinct_zkvm_elf=/home/som/.sp1/riscv/riscv32im-linux-x86_64/bin/riscv32-unknown-elf-g++ 
+export CONAN_PROFILE_HOST=riscv32-baremetal
+
 ```
 
 To build the source in `program` folder

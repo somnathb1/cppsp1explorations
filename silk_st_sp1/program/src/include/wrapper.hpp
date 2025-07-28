@@ -1,10 +1,10 @@
 #pragma once
 
 #ifdef __cplusplus
-extern "C++" {
+extern "C" {
 #endif
 
-void sample_run_wrapped();   // just a declaration – no Silkworm headers here
+void sample_run_wrapped();
 
 #ifdef __cplusplus
 }

@@ -1,11 +1,11 @@
 [package]
 version = "0.1.0"
-name = "fibonacci-script"
+name = "silk_st-script"
 edition = "2021"
-default-run = "fibonacci"
+default-run = "silk_st"
 
 [[bin]]
-name = "fibonacci"
+name = "silk_st"
 path = "src/bin/main.rs"
 
 [[bin]]
@@ -17,7 +17,7 @@ name = "vkey"
 path = "src/bin/vkey.rs"
 
 [dependencies]
-sp1-sdk = "5.0.8"
+sp1-sdk = "5.1.0"
 serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
 serde = { version = "1.0.200", default-features = false, features = ["derive"] }
 clap = { version = "4.0", features = ["derive", "env"] }
@@ -32,10 +32,10 @@ version = "0.2.15"
 default-features = false
 
 [dependencies.sp1-zkvm]
-version = "5.0.8"
+version = "5.1.0"
 default-features = false
-
+features = ["embedded"]
 
 [build-dependencies]
-sp1-build = "5.0.8"
+sp1-build = "5.1.0"
 cxx-build = "1.0.160"           # build-time codegen & C++ compilation

@@ -13,10 +13,10 @@
 use alloy_sol_types::SolType;
 use clap::Parser;
 // use fibonacci_lib::PublicValuesStruct;
-use sp1_sdk::{include_elf, ProverClient, SP1Stdin};
+use sp1_sdk::{include_elf, Prover, ProverClient, SP1Stdin};
 
 /// The ELF (executable and linkable format) file for the Succinct RISC-V zkVM.
-pub const FIBONACCI_ELF: &[u8] = include_elf!("silk-rust-state_transition");
+pub const SILK_ST_ELF: &[u8] = include_elf!("silk-rust-state_transition");
 
 /// The arguments for the command.
 #[derive(Parser, Debug)]
@@ -47,8 +47,6 @@ fn main() {
 
     // Setup the prover client.
     let client = ProverClient::from_env();
-
-    // Setup the inputs.
     let mut stdin = SP1Stdin::new();
     stdin.write(&args.n);
 
@@ -56,21 +54,14 @@ fn main() {
 
     if args.execute {
         // Execute the program
-        let (mut output, report) = client.execute(FIBONACCI_ELF, &stdin).run().unwrap();
+        let (mut output, report) = client.execute(SILK_ST_ELF, &stdin).run().unwrap();
         println!("Program executed successfully.");
-
-        // Read the output.
-        let a: u64 = output.read::<u64>();
-        // println!("n: {}", n);
-        println!("Program output a: {a}");
-        assert_eq!(a, 6765); // fib(20)
-        println!("Values are correct!");
 
         // Record the number of cycles executed.
         println!("Number of cycles: {}", report.total_instruction_count());
     } else {
         // Setup the program for proving.
-        let (pk, vk) = client.setup(FIBONACCI_ELF);
+        let (pk, vk) = client.setup(SILK_ST_ELF);
 
         // Generate the proof
         let proof = client

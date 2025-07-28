@@ -14,7 +14,7 @@ version = "0.2.15"
 default-features = false
 
 [dependencies.sp1-zkvm]
-version = "5.0.8"
+version = "5.1.0"
 
 
 [build-dependencies]
