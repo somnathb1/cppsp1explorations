@@ -18,6 +18,11 @@ export CXX_riscv32im_succinct_zkvm_elf=/home/som/.sp1/riscv/riscv32im-linux-x86_
 export CONAN_PROFILE_HOST=riscv32-baremetal
 
 ```
+Quick cmd
+```
+rm -rf ../target/elf-compilation/riscv32im-succinct-zkvm-elf/release/build/silk-rust-state* && cargo prove build && RUST_BACKTRACE=full RUST_LOG=info cargo run --release --manifest-path ../script/Cargo.toml -- --prove
+```
+
 
 To build the source in `program` folder
 ```
