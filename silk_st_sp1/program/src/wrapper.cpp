@@ -46,9 +46,9 @@ const static std::string json_str = R"json(
 
 extern "C" void sample_run_wrapped() {
     // std::string json_str2 = std::make_unique<string>;
-    // auto state_transition = silkworm::cmd::state_transition::StateTransition(false, true);
-    auto state_transition = silkworm::cmd::state_transition::Dog(false, true);
-    // state_transition.run();
+    auto state_transition = silkworm::cmd::state_transition::StateTransition(false, true);
+    // auto state_transition = silkworm::cmd::state_transition::Dog(false, true);
+    state_transition.run();
     // auto doggie = Dog(false, true);
     // doggie.doStuff();
     return;
