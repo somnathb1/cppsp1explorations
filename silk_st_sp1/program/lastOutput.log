@@ -34,13 +34,13 @@ warning: variable does not need to be mutable
    = note: `#[warn(unused_mut)]` on by default
 
 warning: `silk_st-script` (bin "silk_st") generated 4 warnings (run `cargo fix --bin "silk_st"` to apply 2 suggestions)
-    Finished `release` profile [optimized] target(s) in 1.95s
+    Finished `release` profile [optimized] target(s) in 1.91s
      Running `/home/som/Documents/code/cppsp1explorations/silk_st_sp1/target/release/silk_st --execute`
-[2m2025-07-31T19:04:24.109594Z[0m [33m WARN[0m SP1_PROVER environment variable not set, defaulting to 'cpu'
+[2m2025-07-31T22:44:59.838606Z[0m [33m WARN[0m SP1_PROVER environment variable not set, defaulting to 'cpu'
 n: 20
-[2m2025-07-31T19:04:26.074721Z[0m [32m INFO[0m [1mexecute[0m: clk = 0 pc = 0x378260
-[2m2025-07-31T19:04:26.103070Z[0m [33m WARN[0m [1mexecute[0m: Not all input bytes were read.
-[2m2025-07-31T19:04:26.103439Z[0m [32m INFO[0m [1mexecute[0m: gas: 3483142
-[2m2025-07-31T19:04:26.103455Z[0m [32m INFO[0m [1mexecute[0m: close [3mtime.busy[0m[2m=[0m55.2ms [3mtime.idle[0m[2m=[0m2.90µs
+[2m2025-07-31T22:45:01.820080Z[0m [32m INFO[0m [1mexecute[0m: clk = 0 pc = 0x362560
+[2m2025-07-31T22:45:01.848161Z[0m [33m WARN[0m [1mexecute[0m: Not all input bytes were read.
+[2m2025-07-31T22:45:01.848511Z[0m [32m INFO[0m [1mexecute[0m: gas: 3483142
+[2m2025-07-31T22:45:01.848527Z[0m [32m INFO[0m [1mexecute[0m: close [3mtime.busy[0m[2m=[0m52.9ms [3mtime.idle[0m[2m=[0m2.52µs
 Program executed successfully.
-Number of cycles: 1269588
+Number of cycles: 1259717
