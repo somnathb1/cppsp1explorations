@@ -21,6 +21,12 @@ fn main() {
     println!("cargo:rustc-link-search=native=/home/som/.sp1/riscv/riscv32im-linux-x86_64/riscv32-unknown-elf/lib");
     // println!("cargo:rustc-link-lib=static=supc++");
 
+    cc::Build::new()
+    .file("src/atomic_stubs.c")
+    // .flag("-march=rv32im")
+    // .flag("-mabi=ilp32")
+    .compile("atomic_stubs");
+
     println!("cargo:rustc-link-search=native=/home/som/Documents/code/cppsp1explorations/templibs");
     let conan_dir = Path::new("build/conan2");
     let dst = cmake::Config::new("../silkworm")
@@ -30,9 +36,10 @@ fn main() {
         .define("CMAKE_SYSTEM_PROCESSOR", "riscv32")
         .define("CMAKE_CXX_STANDARD", "20")
         .define("CMAKE_CXX_STANDARD_REQUIRED", "ON")
-        .define("CMAKE_CXX_FLAGS", "-nostdlib -Os -fno-rtti -ffunction-sections -fdata-sections -fPIC   -march=rv32im -mabi=ilp32 -fno-threadsafe-statics -D_GLIBCXX_HAS_GTHREADS=0  -include /home/som/Documents/code/cppsp1explorations/silk_st_sp1/program/src/include/stub_gthread_cond.hpp")
+        .define("CMAKE_CXX_FLAGS", "-nostdlib -Os -fno-rtti -ffunction-sections -fdata-sections -fPIC   -march=rv32im -mabi=ilp32 -fno-threadsafe-statics")
         //-fno-exceptions
         //-D_GLIBCXX_HAS_GTHREADS=0
+        //-include /home/som/Documents/code/cppsp1explorations/silk_st_sp1/program/src/include/stub_gthread_cond.hpp
         .define(
             "CMAKE_EXE_LINKER_FLAGS",
             format!("-T{templib_dir}/ldscripts/elf32lriscv.xn -z norelro"),
@@ -98,6 +105,7 @@ fn main() {
     println!("cargo:rustc-link-lib=static=tooling");
     println!("cargo:rustc-link-lib=static=evmc-loader");
     println!("cargo:rustc-link-lib=static=evmc-loader");
+    println!("cargo:rustc-link-lib=static=atomic_stubs");
     // println!("cargo:rustc-link-lib=static=intx");
 
     // println!("cargo:rustc-link-lib=static=nlohmann");
@@ -133,10 +141,10 @@ fn main() {
         .flag("-Wno-int-in-bool-context")
         .flag("-fno-exceptions")
         .flag("-fno-rtti")
-        .flag("-D_GLIBCXX_HAS_GTHREADS=0")
+        // .flag("-D_GLIBCXX_HAS_GTHREADS=0")
         .flag("-fno-threadsafe-statics")
-        .flag("-include")
-        .flag("src/include/stub_gthread_cond.hpp")
+        // .flag("-include")
+        // .flag("src/include/stub_gthread_cond.hpp")
         .compiler("riscv32-unknown-elf-g++")
         // .flag("-T")
         // .flag(&format!("{templib_dir}/ldscripts/elf32lriscv.xn"))
@@ -187,4 +195,6 @@ fn main() {
     }
     // builder.
     builder.compile("silk_bazooka");
+
+
 }

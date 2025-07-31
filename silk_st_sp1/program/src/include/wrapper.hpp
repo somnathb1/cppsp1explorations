@@ -1,5 +1,5 @@
 #pragma once
-#include "stub_gthread_cond.hpp";
+// #include "stub_gthread_cond.hpp";
 
 #ifdef __cplusplus
 extern "C" {
