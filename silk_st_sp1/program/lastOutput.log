@@ -1,5 +1,5 @@
 warning: silk_st-script@0.1.0: rustc +succinct --version: "rustc 1.88.0-dev\n"
-warning: silk_st-script@0.1.0: silk-rust-state_transition built at 2025-07-31 14:01:49
+warning: silk_st-script@0.1.0: silk-rust-state_transition built at 2025-08-01 23:38:42
    Compiling silk_st-script v0.1.0 (/home/som/Documents/code/cppsp1explorations/silk_st_sp1/script)
 warning: unused import: `alloy_sol_types::SolType`
   --> script/src/bin/main.rs:13:5
@@ -34,13 +34,16 @@ warning: variable does not need to be mutable
    = note: `#[warn(unused_mut)]` on by default
 
 warning: `silk_st-script` (bin "silk_st") generated 4 warnings (run `cargo fix --bin "silk_st"` to apply 2 suggestions)
-    Finished `release` profile [optimized] target(s) in 1.94s
-     Running `/home/som/Documents/code/cppsp1explorations/silk_st_sp1/target/release/silk_st --execute`
-[2m2025-08-01T16:32:15.606766Z[0m [33m WARN[0m SP1_PROVER environment variable not set, defaulting to 'cpu'
+    Finished `release` profile [optimized] target(s) in 1.88s
+     Running `/home/som/Documents/code/cppsp1explorations/silk_st_sp1/target/release/silk_st --prove`
+[2m2025-08-01T21:45:45.245045Z[0m [33m WARN[0m SP1_PROVER environment variable not set, defaulting to 'cpu'
 n: 20
-[2m2025-08-01T16:32:17.597753Z[0m [32m INFO[0m [1mexecute[0m: clk = 0 pc = 0x36288c
-[2m2025-08-01T16:32:17.625762Z[0m [33m WARN[0m [1mexecute[0m: Not all input bytes were read.
-[2m2025-08-01T16:32:17.626165Z[0m [32m INFO[0m [1mexecute[0m: gas: 3483142
-[2m2025-08-01T16:32:17.626183Z[0m [32m INFO[0m [1mexecute[0m: close [3mtime.busy[0m[2m=[0m53.1ms [3mtime.idle[0m[2m=[0m2.98µs
-Program executed successfully.
-Number of cycles: 1260244
+[2m2025-08-01T21:45:48.006516Z[0m [32m INFO[0m [1mprove_core[0m: clk = 0 pc = 0x370f18
+[2m2025-08-01T21:45:48.032882Z[0m [33m WARN[0m [1mprove_core[0m: Not all input bytes were read.
+[2m2025-08-01T21:45:48.057436Z[0m [32m INFO[0m [1mprove_core[0m: clk = 0 pc = 0x370f18
+[2m2025-08-01T21:45:48.225335Z[0m [33m WARN[0m [1mprove_core[0m: Not all input bytes were read.
+[2m2025-08-01T21:45:48.851085Z[0m [32m INFO[0m [1mprove_core[0m:[1mgenerate main traces[0m: close [3mtime.busy[0m[2m=[0m539ms [3mtime.idle[0m[2m=[0m1.80µs [2m[3mindex[0m[2m=[0m0[0m
+[2m2025-08-01T21:46:29.674903Z[0m [32m INFO[0m [1mprove_core[0m: close [3mtime.busy[0m[2m=[0m40.9s [3mtime.idle[0m[2m=[0m829ms
+Successfully generated proof!
+[2m2025-08-01T21:46:29.890689Z[0m [32m INFO[0m [1mverify[0m: close [3mtime.busy[0m[2m=[0m213ms [3mtime.idle[0m[2m=[0m1.37µs
+Successfully verified proof!
